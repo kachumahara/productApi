@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const multer = require('multer')
 
 const productRoutes = require("./api/routes/products");
 
@@ -18,6 +19,7 @@ mongoose.connect(
 mongoose.Promise = global.Promise;
 
 app.use(morgan("dev"));
+app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
